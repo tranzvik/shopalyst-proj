@@ -1,0 +1,246 @@
+@import "./common";
+@import "@material/drawer/mdc-drawer";
+@import "@material/list/mdc-list";
+@import "@material/image-list/mdc-image-list";
+@import "@material/ripple/mixins";
+@import "@material/typography/mdc-typography";
+@import "./css/preview";
+
+
+
+.home {
+  display: flex; 
+  // hiding nav draw in mob phones
+    @media only screen and (max-width: 600px) {
+      aside {
+       display:none;
+      }
+    }
+
+}
+
+.shrine-drawer {
+  margin: 0px !important;
+}
+
+.shrine-logo-drawer {
+  display: block;
+  width: 48px;
+  padding: 40px 0 0;
+  margin: 0 auto;
+  fill: currentColor;
+}
+
+.shrine-title {
+  @include mdc-typography(headline6);
+  text-align: center;
+  margin: 5px auto;
+}
+
+.product-list {
+  @include mdc-image-list-standard-columns(4);
+  overflow: auto;
+  
+
+  .mdc-image-list__supporting {
+    justify-content: center;
+  }
+
+  .mdc-image-list__item {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .mdc-image-list__label {
+    @include mdc-typography(subtitle2);
+  }
+
+  .mdc-image-list__image {
+    max-width: 200px;
+    max-height: 200px;
+  }
+}
+
+.shrine-drawer {
+  @include mdc-drawer-fill-color-accessible(primary);
+  // Drawer defaults to a higher z-index, but we aren't overlaying it over anything
+  @include mdc-drawer-z-index(0);
+
+  background-color: lightgray;
+  margin: 10px;
+  text-transform: uppercase;
+
+  .mdc-list {
+    margin: 70px 5px auto 5px;
+  }
+
+  .mdc-list-item {
+    border-radius: 6px;
+    justify-content: center;
+  }
+
+  // This needs 3-class specificity to override MDC Drawer styles
+  .mdc-list .mdc-list-item {
+    @include mdc-states-activated(#fff);
+  }
+
+
+}
+
+.block__header-content {
+font-size: large;
+height: 15%;
+background-color: black;
+color: white;
+text-align: center;
+padding: 20px 20px 0px 20px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.block__user-account {
+  display: flex;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.block__user-account--icon {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: $large-space-size;
+    &:hover {
+      background-color: blue;
+    }
+ 
+  }
+
+  .block__user-account--title {
+    top: 10px;
+    position: relative;
+    padding-left: 10px;
+  }
+
+  .block__user-tabs{
+    margin-top: 15px;
+    font-size: smaller;
+    ul {
+      display: flex;
+    }
+
+    li{
+      list-style-type: none;
+      padding: $medium-space-size;
+      cursor: pointer;
+      border-right: 1px solid white;
+      
+    &:hover {
+      background-color: lightseagreen;
+    }
+  }
+    
+}
+
+.pagination-footer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5%;
+
+  .page-button {
+    margin-left:  $medium-space-size;
+    margin-right:  $medium-space-size;
+    background-color: lightgrey !important;
+  }
+}
+
+.product-content-container {
+  display: flex;
+  margin: 20px;
+flex-wrap: wrap;
+
+
+  .product-card {
+    flex: 1 0 21%;
+    margin: 20px;
+    margin-bottom: 5%;
+    max-width: 250px;
+    max-height: 250px;
+    cursor: pointer;
+    
+  }
+
+  .product-card__image {
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .price-details {
+    .offer-price {
+      color: green;
+
+    }
+    .sale-price {
+      color:grey;
+      text-decoration: line-through;
+    }
+    .discount {
+      color :blue;
+    }
+  }
+}
+
+.product-card__list-mode{
+  flex: 1 0 21%;
+  margin: 20px;
+  margin-bottom: 7%;
+ max-width: unset; 
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+
+  
+}
+
+.product-content-container__list-mode {
+  display:block;
+}
+
+.product-content-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2%;
+    margin-right: 15%;
+}
+
+.list-grid-view {
+  padding-left: 50px;
+}
+
+.product-title{
+    max-height: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    font-size: small;
+
+}
+.add-product-btn {
+  background-color:#efefef;
+  color:darkblue;
+  border-radius: 5px;
+}
+
+.search-bar {
+padding-right: 10em;
+display: none;
+
+}
+
+
+
+
+
+
+
+
+

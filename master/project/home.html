@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopalyst Proj</title>
+  <link rel="shortcut icon" href="https://material.io/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" href="bundle-home.css">
+  <link rel="stylesheet" href="bundle-login.css">
+  <link rel="stylesheet" href="./css/main-page.css" />
+</head>
+
+<body class="home">
+
+  <aside class="mdc-drawer shrine-drawer">
+    <div class="mdc-drawer__header">
+      <svg class="shrine-logo-drawer" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 24 24"
+        enable-background="new 0 0 24 24" xml:space="preserve" fill="#000000" focusable="false">
+        <g>
+          <g>
+            <path
+              d="M17,2H7L2,6.62L12,22L22,6.62L17,2z M16.5,3.58l3.16,2.92H16.5V3.58z M7.59,3.5H15v3H4.34L7.59,3.5z
+                   M11.25,18.1L7.94,13h3.31V18.1z M11.25,11.5H6.96L4.69,8h6.56V11.5z M16.5,12.32 M12.75,18.09V8h6.56L12.75,18.09z" />
+          </g>
+          <rect fill="none" width="24" height="24" />
+        </g>
+      </svg>
+      <h1 class="shrine-title">CHOOSY-LYST</h1>
+    </div>
+    <div class="mdc-drawer__content">
+      <nav class="mdc-list">
+        <a class="mdc-list-item mdc-list-item--activated" aria-selected="true" tabindex="0" href="#">
+          <span class="mdc-list-item__text">Featured</span>
+        </a>
+
+
+        <a class="mdc-list-item" href="#">
+          <span class="mdc-list-item__text">Apartment</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <span class="mdc-list-item__text">Accessories</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <span class="mdc-list-item__text">Shoes</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <span class="mdc-list-item__text">Tops</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <span class="mdc-list-item__text">Bottoms</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <span class="mdc-list-item__text">Dresses</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <span class="mdc-list-item__text">My Account</span>
+        </a>
+      </nav>
+    </div>
+    <div class="occupy">
+
+    </div>
+  </aside>
+
+
+  <div style="width: 100%;">
+   
+    <div class="block__header-content">
+      <div  class="block__user-account">
+          <div id="search-bar" class= "search-bar" >
+              <form data-bind="submit: searchProduct">
+                <input data-bind='value: itemToSearch, valueUpdate: "afterkeydown"' placeholder="What are you looking for?" />
+                <button class="add-product-btn" data-bind="cick: searchProduct">Search</button>
+              </form>
+            </div>
+        <img class="block__user-account--icon" src="./assets/user.png" title="Click to View Account Options">
+        <span class="block__user-account--title">Welcome User</span>
+        <img class="block__user-account--icon" src="./assets/cart.png" title="Click to View Your Cart">
+      </div>
+
+      <div class="block__user-tabs">
+        <ul>
+          <li>HOME</li>
+          <li>TODAYS DEALS</li>
+          <li>BEST OFFER</li>
+          <li>ABOUT US</li>
+        </ul>
+      </div>
+
+
+      <!-- 
+
+       <div>
+        <form data-bind="submit: searchProduct">
+          <input data-bind='value: itemToSearch, valueUpdate: "afterkeydown"' placeholder="What are you looking for?" />
+          <button data-bind="cick: searchProduct">Search</button>
+        </form>
+      </div> -->
+
+    </div>
+
+    <div class="s131">
+      <form data-bind="submit: searchProduct">
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <input id="search" type="text" placeholder="What are you looking for?"
+              data-bind='value: itemToSearch, valueUpdate: "afterkeydown"' />
+          </div>
+          <div class="input-field third-wrap">
+            <button class="btn-search" data-bind="cick: searchProduct">SEARCH</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="content product-list-content" style="display: none">
+
+      <div class="product-content-actions">
+
+        <div class=" product-sort" title="Select an Option to Sort Products">
+          <select data-bind="options: sortOptions,
+          optionsCaption: 'Choose one...',
+          value: selectedSortOption"> Sort Products</select>
+        </div>
+
+        <div class="list-grid-view">
+            <span class="list-style-buttons">
+              <a href="#" id="gridview" data-bind="click: switchProductView" title="Switch to Grid View"><img
+                  src="./assets/grid-view-active.png" alt="Grid"></a>
+              <a href="#" id="listview" data-bind="click: switchProductView" title="Switch to List View" ><img
+                  src="./assets/list-view.png" alt="List"></a>
+            </span>
+          </div>
+      </div>
+
+      <div class="product-content-container">
+        <!--ko foreach: $data.paginatedProductList-->
+        <div class="product-card" data-bind="click: $parent.previewProduct">
+          <img class="product-card__image" data-bind="attr:{'src': $data.imageUrl}">
+          <div class="other-details">
+            <div class="product-title"><span data-bind="text: $data.title"></span></div>
+            <div class="price-details">
+              <span class="offer-price" data-bind="text:'Rs.'+ $data.offerPrice"></span>
+              <span class="sale-price" data-bind="text: 'Rs.'+$data.salePrice"></span>
+              <span class="discount" data-bind="text: $data.discount +'% Off'"></span>
+            </div>
+            <button class="add-product-btn">Add to Cart</button>
+          </div>
+        </div>
+        <!--/ko-->
+      </div>
+    </div>
+
+    <footer>
+      <div class="pagination-footer" style="display: none">
+        <a href="#" class="page-button mdc-button mdc-button--raised next mdc-button--outlined"
+          data-bind="click: goToFirst, visible: hasPrevious">
+          <span class="mdc-button__label"> GOTO-FIRST-PAGE</span>
+        </a>
+
+        <a href="#" class="page-button  mdc-button mdc-button--raised next mdc-button--outlined"
+          data-bind="click: previous, visible: hasPrevious">
+          <span class="mdc-button__label">PREVIOUS</span>
+        </a>
+
+        <!-- <span class="mdc-button__label" data-bind="text: getCurrentPageNo($root.pageNumber())"></span>-->
+
+        <a href="#" class="page-button mdc-button mdc-button--raised next mdc-button--outlined"
+          data-bind="click: next, visible: hasNext">
+          <span class="mdc-button__label">NEXT</span>
+        </a>
+
+        <a href="#" class="page-button mdc-button mdc-button--raised next mdc-button--outlined"
+          data-bind="click: goToLast, visible: hasNext">
+          <span class="mdc-button__label">GOTO-LAST-PAGE</span>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script type='text/javascript' src='./knockout-3.5.0.js'></script>
+  <script src="bundle-home.js" async></script>
+
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <div class="preview__header">
+        <span class="preview__title">Product Preview</span>
+        <span class="close" data-bind="click: closePreview">&times;</span>
+      </div>
+
+      <div class="preview__content">
+        <img class="product-card__image preview__image" data-bind="attr:{'src': previewImageLink}">
+        <div class="preview__product-details">
+          <span data-bind="text: previewImageTitle"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>
