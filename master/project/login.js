@@ -14,14 +14,14 @@ class ShopalystLogin {
     verifyCredentials() {
         const username = new MDCTextField(document.querySelector('.username'));
         const password = new MDCTextField(document.querySelector('.password'));
-       /// if (username.value === "shopalyst01" && password.value === "shopalyst01") {
+        if (username.value === "shopalyst01" && password.value === "shopalyst01") {
             console.log("Login Successful");
             window.location = "home.html";
            return false;
-       // }
-      //  else {
+        }
+        else {
             alert("Incorrect credentials");
-       // }
+        }
 
         //Redirect
 
