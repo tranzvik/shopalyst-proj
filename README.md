@@ -1,4 +1,4 @@
-# shopalyst-proj
+# Shopalyst-proj
 Shopalyst Mini Project
 
 
